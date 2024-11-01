@@ -1,6 +1,23 @@
-<header>
+<header class="border-b-2 border-gray-600">
   <nav class="px-8 py-4">
     <ul class="flex justify-end gap-4">
+
+      <% if current_user %>
+        <li>
+          <%= current_user.email %>
+        </li>
+        <li>
+          <%= current_user.name %>
+        </li>
+        <li>
+          <%= current_user.role %>
+        </li>
+      <% else %>
+        <li>
+          Vous n'êtes pas connecté
+        </li>
+      <% end %>
+
       <li>
         <%= link_to 'Collections', collections_path, class: 'underline transition hover:duration-150 hover:no-underline' %>
       </li>

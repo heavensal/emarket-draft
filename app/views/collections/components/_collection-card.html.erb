@@ -1,0 +1,19 @@
+<%# app/views/collections/components/_collection-card.html.erb %>
+
+<%= link_to collection_path(collection) do %>
+  <div class="relative">
+
+    <% if collection.photo.attached? %>
+      <%= cl_image_tag collection.photo.key, class: "w-full h-64 object-cover rounded-lg opacity-50" %>
+    <% else %>
+      <%= image_tag 'https://images.unsplash.com/photo-1593795899768-947c4929449d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80', class: "w-full h-64 object-cover rounded-lg opacity-50" %>
+    <% end %>
+
+    <h2 class="absolute inset-0 flex flex-col items-center justify-center p-6">
+      <%= collection.name %>
+    </h2>
+
+  </div>
+<% end %>
+
+<%# render 'collections/components/collection-card', collection: collection %>

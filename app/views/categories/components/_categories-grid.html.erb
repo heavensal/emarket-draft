@@ -1,0 +1,11 @@
+<%#  app/views/categories/components/_categories-grid.html.erb %>
+
+<section class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+    <% categories.each do |category| %>
+
+      <%= render 'categories/components/category-card', category: category %>
+
+    <% end %>
+  </section>
+
+<%# render 'categories/components/categories-grid', categories: categories %>

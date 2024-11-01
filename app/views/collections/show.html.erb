@@ -15,16 +15,9 @@
   <% end %>
 </div>
 
-<% if @collection.products.empty? %>
+<main class="grid grid-cols-4 gap-4 my-8">
 
-  <p class="text-center text-lg my-4">
-    Aucun produit dans cette collection
-  </p>
+  <%= render 'layouts/filter/aside-filter' %>
+  <%= render 'products/products-grid', products: @collection.products %>
 
-<% else %>
-
-  <% @collection.products.each do |product| %>
-    <%= render 'products/product-card', product: product %>
-  <% end %>
-
-<% end %>
+</main>

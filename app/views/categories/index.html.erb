@@ -4,8 +4,6 @@
 
 <%= link_to 'Créer une nouvelle catégorie', new_category_path, class: "bg-blue-800 px-4 py-2 rounded-sm hover:bg-blue-700 transition hover:duration-300" %>
 
-<% @categories.each do |category| %>
-  <h2>
-    <%= link_to category.name, category %>
-  </h2>
-<% end %>
+<main class="p-10">
+  <%= render 'categories/components/categories-grid', categories: @categories %>
+</main>

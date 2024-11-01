@@ -7,15 +7,8 @@
 </div>
 
 <main class="grid grid-cols-4 gap-4 my-8">
-  <div>
-    filter
-  </div>
 
-  <div class="grid gap-2 md:grid-cols-3 grid-cols-1 col-span-3">
-    <% @products.each do |product| %>
+  <%= render 'layouts/filter/aside-filter' %>
+  <%= render 'products-grid', products: @products %>
 
-      <%= render 'product-card', product: product %>
-
-    <% end %>
-  </div>
 </main>

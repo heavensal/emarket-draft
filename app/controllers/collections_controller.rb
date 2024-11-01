@@ -16,9 +16,9 @@ class CollectionsController < ApplicationController
     @collection = Collection.new(collection_params)
 
     if @collection.save
-      redirect_to @collection
+      redirect_to @collection, success: "La Collection a été créée avec succès"
     else
-      render :new
+      render :new, alert: "Echec de la création de la Collection"
     end
   end
 
@@ -27,17 +27,17 @@ class CollectionsController < ApplicationController
 
   def update
     if @collection.update(collection_params)
-      redirect_to @collection
+      redirect_to @collection, success: "La Collection a été modifiée avec succès"
     else
-      render :edit
+      render :edit, alert: "Echec de la modification de la Collection"
     end
   end
 
   def destroy
     if @collection.destroy
-      redirect_to collections_path
+      redirect_to collections_path, notice: "La Collection a été supprimée avec succès"
     else
-      redirect_to @collection
+      redirect_to @collection, alert: "Echec de la suppression de la Collection"
     end
   end
 

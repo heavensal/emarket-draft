@@ -17,9 +17,9 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to @category
+      redirect_to @category, success: "La Catégorie a été créée avec succès"
     else
-      render :new
+      render :new, alert: "Echec de la création de la Catégorie"
     end
   end
 
@@ -28,18 +28,18 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category
+      redirect_to @category, success: "La Catégorie a été modifiée avec succès"
     else
-      render :edit
+      render :edit, alert: "Echec de la modification de la Catégorie"
     end
   end
 
   def destroy
     @category = Category.find(params[:id])
     if @category.destroy
-      redirect_to categories_path
+      redirect_to categories_path, notice: "La Catégorie a été supprimée avec succès"
     else
-      redirect_to @category
+      redirect_to @category, alert: "Echec de la suppression de la Catégorie"
     end
   end
 

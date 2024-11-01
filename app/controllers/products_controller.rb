@@ -17,9 +17,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to products_path
+      redirect_to products_path, success: "Le Produit a été créé avec succès"
     else
-      render :new
+      render :new, alert: "Echec de la création du Produit"
     end
   end
 
@@ -30,17 +30,17 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_path(@product)
+      redirect_to product_path(@product), success: "Le Produit a été modifié avec succès"
     else
-      render :edit
+      render :edit, alert: "Echec de la modification du Produit"
     end
   end
 
   def destroy
     if @product.destroy
-      redirect_to products_path
+      redirect_to products_path, notice: "Le Produit a été supprimé avec succès"
     else
-      render :show
+      render :show, alert: "Echec de la suppression du Produit"
     end
   end
 

@@ -1,0 +1,21 @@
+<%# app/views/products/_products-grid.html.erb %>
+
+<section class="grid gap-2 md:grid-cols-3 grid-cols-1 col-span-3">
+
+    <% if products.empty? %>
+
+      <p class="text-center text-lg my-4">
+        Il n'y a actuellement aucun produit
+      </p>
+
+    <% else %>
+
+      <% products.each do |product| %>
+        <%= render 'products/product-card', product: product %>
+      <% end %>
+
+    <% end %>
+
+</section>
+
+<%# render 'products/products-grid', products: ARRAY %>

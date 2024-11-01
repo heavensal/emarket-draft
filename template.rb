@@ -28,3 +28,9 @@
 # configure direct uploads from active storage
 #
 # add devise gem
+# add user model
+# # Users authentication
+# gem "devise", "~> 4.9", ">= 4.9.4"
+# gem "omniauth", "~> 2.1", ">= 2.1.2"
+# gem "omniauth-google-oauth2", "~> 1.2"
+# gem "omniauth-rails_csrf_protection", "~> 1.0"

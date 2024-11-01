@@ -1,0 +1,11 @@
+<%#  app/views/collections/components/_collections-grid.html.erb %>
+
+<section class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+    <% collections.each do |collection| %>
+
+      <%= render 'collections/components/collection-card', collection: collection %>
+
+    <% end %>
+  </section>
+
+<%# render 'collections/components/collections-grid', collections: collections %>

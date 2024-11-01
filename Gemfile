@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.2', '>= 7.2.1.2'
+gem "rails", "~> 7.2", ">= 7.2.1.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use postgresql as the database for Active Record
@@ -34,7 +34,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -47,10 +47,10 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Use RSpec for unit and integration tests [https://rspec.info/]
-  gem 'rspec-rails', '~> 7.0.0'
+  gem "rspec-rails", "~> 7.0.0"
 
   # Use env
-  gem 'dotenv-rails'
+  gem "dotenv-rails"
 end
 
 group :development do
@@ -66,4 +66,14 @@ end
 
 # photos uploaded to Cloudinary
 # gem 'carrierwave'
-gem 'cloudinary'
+gem "cloudinary", "~> 2.2"
+
+# Users authentication
+gem "devise", "~> 4.9", ">= 4.9.4"
+gem "omniauth", "~> 2.1", ">= 2.1.2"
+gem "omniauth-google-oauth2", "~> 1.2"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+# Payments
+gem "pay", "~> 8.1", ">= 8.1.3"
+gem "stripe", "~> 13.1"

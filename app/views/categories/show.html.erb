@@ -8,18 +8,17 @@
   <%= link_to "Supprimer", category_path(@category), data: {turbo_method: :delete, turbo_confirm: "Supprimer la catégorie ?"}, class: "bg-red-800 px-4 py-2 rounded-sm hover:bg-red-700 transition hover:duration-300" %>
 </div>
 
-<% if @category.products.empty? %>
-
-  <p class="text-center text-lg my-4">
-    Aucun produit dans cette catégorie
-  </p>
-
-<% else %>
-
-  <% @category.products.each do |product| %>
-    <h2>
-      <%= link_to product.name, product %>
-    </h2>
+<div class="flex justify-center my-4">
+  <% if @category.photo.attached? %>
+    <%= cl_image_tag @category.photo.key, width: 240, height: 240, class: "rounded-lg" %>
+  <% else %>
+    <p>Pas de photo</p>
   <% end %>
+</div>
 
-<% end %>
+<main class="grid grid-cols-4 gap-4 my-8">
+
+  <%= render 'layouts/filter/aside-filter' %>
+  <%= render 'products/products-grid', products: @category.products %>
+
+</main>

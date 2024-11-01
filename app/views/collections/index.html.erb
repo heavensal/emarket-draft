@@ -5,25 +5,5 @@
 <%= link_to 'Créer une nouvelle collection', new_collection_path, class: "bg-blue-800 px-4 py-2 rounded-sm hover:bg-blue-700 transition hover:duration-300" %>
 
 <main class="p-10">
-  <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
-    <% @collections.each do |collection| %>
-
-      <%= link_to collection_path(collection) do %>
-        <div class="relative">
-
-          <% if collection.photo.attached? %>
-            <%= cl_image_tag collection.photo.key, class: "w-full h-64 object-cover rounded-lg opacity-50" %>
-          <% else %>
-            <%= image_tag 'https://images.unsplash.com/photo-1593795899768-947c4929449d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80', class: "w-full h-64 object-cover rounded-lg opacity-50" %>
-          <% end %>
-
-          <h2 class="absolute inset-0 flex flex-col items-center justify-center p-6">
-            <%= collection.name %>
-          </h2>
-
-        </div>
-      <% end %>
-
-    <% end %>
-  </div>
+  <%= render 'collections/components/collections-grid', collections: @collections %>
 </main>

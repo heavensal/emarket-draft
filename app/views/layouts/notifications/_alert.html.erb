@@ -1,0 +1,7 @@
+<% if flash[:alert] %>
+  <div id="alert-toast" class="fixed bottom-4 right-4 rounded-md border-red-800 border-2 bg-gray-800 text-white p-4 ">
+    <p>
+      <%= flash[:alert] %>
+    </p>
+  </div>
+<% end %>

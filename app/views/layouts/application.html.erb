@@ -25,5 +25,9 @@
   <body class="bg-[#242424] text-white">
     <%= render 'layouts/navbar/navbar' %>
     <%= yield %>
+
+    <%= render 'layouts/notifications/notice' %>
+    <%= render 'layouts/notifications/success' %>
+    <%= render 'layouts/notifications/alert' %>
   </body>
 </html>

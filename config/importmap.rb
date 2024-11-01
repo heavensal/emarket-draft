@@ -7,3 +7,5 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 # config/importmap.rb
 pin "@rails/activestorage", to: "activestorage.esm.js"
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"
