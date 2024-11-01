@@ -1,0 +1,25 @@
+<h1 class="text-center text-2xl font-bold my-4">
+
+  <%= @category.name %>
+</h1>
+
+<div class="text-center space-x-4">
+  <%= link_to "Modifier", edit_category_path(@category), class: "bg-blue-800 px-4 py-2 rounded-sm hover:bg-blue-700 transition hover:duration-300" %>
+  <%= link_to "Supprimer", category_path(@category), data: {turbo_method: :delete, turbo_confirm: "Supprimer la catégorie ?"}, class: "bg-red-800 px-4 py-2 rounded-sm hover:bg-red-700 transition hover:duration-300" %>
+</div>
+
+<% if @category.products.empty? %>
+
+  <p class="text-center text-lg my-4">
+    Aucun produit dans cette catégorie
+  </p>
+
+<% else %>
+
+  <% @category.products.each do |product| %>
+    <h2>
+      <%= link_to product.name, product %>
+    </h2>
+  <% end %>
+
+<% end %>

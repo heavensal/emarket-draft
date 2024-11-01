@@ -1,0 +1,30 @@
+<h1 class="text-center text-2xl font-bold my-4">
+  <%= @collection.name %>
+</h1>
+
+<div class="text-center space-x-4">
+  <%= link_to "Modifier", edit_collection_path(@collection), class: "bg-blue-800 px-4 py-2 rounded-sm hover:bg-blue-700 transition hover:duration-300" %>
+  <%= link_to "Supprimer", collection_path(@collection), data: {turbo_method: :delete, turbo_confirm: "Supprimer la collection ?"}, class: "bg-red-800 px-4 py-2 rounded-sm hover:bg-red-700 transition hover:duration-300" %>
+</div>
+
+<div class="flex justify-center my-4">
+  <% if @collection.photo.attached? %>
+    <%= cl_image_tag @collection.photo.key, width: 240, height: 240, class: "rounded-lg" %>
+  <% else %>
+    <p>Pas de photo</p>
+  <% end %>
+</div>
+
+<% if @collection.products.empty? %>
+
+  <p class="text-center text-lg my-4">
+    Aucun produit dans cette collection
+  </p>
+
+<% else %>
+
+  <% @collection.products.each do |product| %>
+    <%= render 'products/product-card', product: product %>
+  <% end %>
+
+<% end %>

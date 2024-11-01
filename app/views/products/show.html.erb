@@ -1,0 +1,32 @@
+<main class="grid md:grid-cols-2 gap-10 md:px-10">
+
+  <div id="product_photos">
+    <% if @product.photos.empty? %>
+      <%= image_tag 'black_tshirt.webp', class: "rounded-lg" %>
+    <% else %>
+      <% @product.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, class: "rounded-lg" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="product_infos">
+    <h1 class="text-2xl font-bold my-4">
+      <%= link_to '✏️', edit_product_path(@product), class: "border-blue-800 border-2 p-1 rounded-sm transition hover:bg-blue-800" %>
+      <%= @product.name %>
+    </h1>
+
+    <p class="text-lg my-4">
+      <%= number_to_currency(@product.price, unit: "€", precision: 2, separator: ".", delimiter: " ", format: "%n %u") %>
+    </p>
+
+    <div id="add_to_cart_button" class="text-center text-xl font-bold bg-orange-600 py-4 rounded-md transition hover:duration-150 hover:bg-orange-500">
+      <%= link_to 'Ajouter au Panier', '#', class: "block" %>
+    </div>
+
+    <p class="my-8 text-gray-100">
+      <%= @product.description %>
+    </p>
+
+  </div>
+</main>

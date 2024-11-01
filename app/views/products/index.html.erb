@@ -1,0 +1,21 @@
+<h1 class="text-center text-2xl font-bold my-4">
+  Tous les produits
+</h1>
+
+<div class="text-center">
+  <%= link_to 'Créer un nouveau produit', new_product_path, class: "bg-blue-800 px-4 py-2 rounded-sm hover:bg-blue-700 transition hover:duration-300" %>
+</div>
+
+<main class="grid grid-cols-4 gap-4 my-8">
+  <div>
+    filter
+  </div>
+
+  <div class="grid gap-2 md:grid-cols-3 grid-cols-1 col-span-3">
+    <% @products.each do |product| %>
+
+      <%= render 'product-card', product: product %>
+
+    <% end %>
+  </div>
+</main>

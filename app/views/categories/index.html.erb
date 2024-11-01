@@ -1,0 +1,11 @@
+<h1 class="text-center text-2xl font-bold my-4">
+  Toutes les catégories
+</h1>
+
+<%= link_to 'Créer une nouvelle catégorie', new_category_path, class: "bg-blue-800 px-4 py-2 rounded-sm hover:bg-blue-700 transition hover:duration-300" %>
+
+<% @categories.each do |category| %>
+  <h2>
+    <%= link_to category.name, category %>
+  </h2>
+<% end %>

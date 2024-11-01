@@ -1,0 +1,35 @@
+<h1 class="text-center text-2xl font-bold my-4">
+  Nouvelle collection
+</h1>
+
+
+<main>
+
+  <%= form_for @collection, html: { class: "space-y-4" }  do |f| %>
+
+    <div class="md:w-1/2 mx-auto space-y-1">
+      <%= f.label :name, "Nom de la collection", class: "block" %>
+      <%= f.text_field :name, placeholder: "T-shirts", class: "bg-gray-600 w-full rounded-sm" %>
+    </div>
+
+    <div class="md:w-1/2 mx-auto space-y-1">
+
+      <%= f.label :photo, "Photo de la collection", class: "block" %>
+      <%= f.hidden_field :photo, value: @collection.photo.attached? ? @collection.photo.signed_id : nil %>
+      <%= f.file_field :photo, as: :file, class: "w-32 h-32 object-cover rounded-sm",  direct_upload: true, class: "bg-gray-600 w-full rounded-sm" %>
+
+      <% if @collection.photo.attached? %>
+        <div class="mt-2 flex justify-center">
+          <%= cl_image_tag @collection.photo.key, class: "w-32 h-32 object-cover rounded-sm" %>
+        </div>
+      <% end %>
+
+    </div>
+
+    <div class="text-center">
+      <%= f.submit "Créer la collection", class: "cursor-pointer bg-blue-800 py-2 px-4 rounded-sm" %>
+    </div>
+
+  <% end %>
+
+</main>

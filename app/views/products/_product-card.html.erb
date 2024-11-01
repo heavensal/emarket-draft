@@ -1,0 +1,21 @@
+<%# app/views/products/_product-card.html.erb %>
+
+<%= link_to product_path(product), class: "group block" do %>
+
+  <% if product.photos.empty? %>
+    <%= image_tag 'black_tshirt.webp', class: "aspect-square w-full rounded object-cover" %>
+  <% else %>
+    <%= cl_image_tag product.photos.first.key, class: "aspect-square w-full rounded object-cover" %>
+  <% end %>
+
+  <div class="mt-3">
+    <h3 class="font-medium text-gray-100 group-hover:underline group-hover:underline-offset-4">
+      <%= product.name %>
+    </h3>
+
+    <p class="mt-1 text-sm text-gray-300">
+      <%= number_to_currency(product.price, unit: "€", precision: 2, separator: ".", delimiter: " ", format: "%n %u") %>
+    </p>
+  </div>
+
+<% end %>
