@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "payments/checkout"
+  get "payments/success"
+  get "payments/failure"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -27,5 +30,15 @@ Rails.application.routes.draw do
   resources :categories
 
   # products
-  resources :products
+  resources :products do
+    resources :cart_items, only: [ :create ]
+  end
+
+  # carts
+  resources :carts do
+    resources :cart_items, only: [ :destroy ]
+  end
+
+  # payments
+  resources :payments, only: [ :checkout, :success, :failure ]
 end

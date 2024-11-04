@@ -1,0 +1,38 @@
+<%# display my cart %>
+
+<h1 class="text-center text-2xl font-bold my-4">
+  Mon Panier
+</h1>
+
+<main>
+  <div class="md:w-1/2 mx-auto space-y-4">
+    <% if @cart.cart_items.any? %>
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th class="text-left">Articles</th>
+            <th class="text-right">
+
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart.cart_items.each do |cart_item| %>
+            <tr>
+              <td class="text-left">
+                <%= cart_item.product.name %>
+              </td>
+              <td class="text-right">
+
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="text-center">Votre panier est vide</p>
+    <% end %>
+  </div>
+
+  <%= link_to 'Procéder au paiement', payments_checkout_path %>
+</main>

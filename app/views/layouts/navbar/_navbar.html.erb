@@ -27,6 +27,13 @@
       <li>
         <%= link_to 'Produits', products_path,  class: 'underline transition hover:duration-150 hover:no-underline' %>
       </li>
+
+      <li>
+        <% if current_user %>
+          <%= link_to "Mon Panier", cart_path(@cart), class: "underline transition hover:duration-150 hover:no-underline" %>
+
+        <% end %>
+      </li>
     </ul>
   </nav>
 </header>

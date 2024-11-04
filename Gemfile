@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2", ">= 7.2.1.2"
+gem "rails", "~> 7.2", ">= 7.2.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use postgresql as the database for Active Record
@@ -77,3 +77,4 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 # Payments
 gem "pay", "~> 8.1", ">= 8.1.3"
 gem "stripe", "~> 13.1"
+gem "receipts", "~> 2.4"

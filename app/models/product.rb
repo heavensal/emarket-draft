@@ -5,6 +5,8 @@ class Product < ApplicationRecord
   has_many_attached :photos
   has_many :collection_assignments, dependent: :destroy
   has_many :collections, through: :collection_assignments
+  has_many :cart_items, dependent: :destroy
+  has_many :carts, through: :cart_items
 
   belongs_to :category, optional: true
 

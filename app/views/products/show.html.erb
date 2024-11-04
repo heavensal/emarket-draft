@@ -21,7 +21,12 @@
     </p>
 
     <div id="add_to_cart_button" class="text-center text-xl font-bold bg-orange-600 py-4 rounded-md transition hover:duration-150 hover:bg-orange-500">
-      <%= link_to 'Ajouter au Panier', '#', class: "block" %>
+
+      <%= form_for [@product, @cart_item] do |f| %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.hidden_field :price, value: @product.price %>
+        <%= f.submit "Ajouter au panier", class: "text-white cursor-pointer" %>
+      <% end %>
     </div>
 
     <p class="my-8 text-gray-100">

@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: [ :google_oauth2 ], stretches: 12
 
+  has_many :carts, dependent: :destroy
+
+  # omniauth
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -14,6 +17,7 @@ class User < ApplicationRecord
     end
   end
 
+  # ROLES
   def admin?
     role == "admin"
   end

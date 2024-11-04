@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @cart_item = CartItem.new(product: @product, price: @product.price, cart: @cart)
   end
 
   def new

@@ -45,3 +45,5 @@ node_modules
 *.local
 
 .env*
+
+/config/credentials/development.key
