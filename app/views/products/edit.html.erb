@@ -2,50 +2,6 @@
   Modifier le Produit
 </h1>
 
-<main>
-  <%= form_for @product, html: { class: "space-y-4" } do |f| %>
-
-  <div class="md:w-1/2 mx-auto space-y-1">
-    <%= f.label :name, "Nom du produit", class: "block" %>
-    <%= f.text_field :name, placeholder: "T-shirt Naruto", class: "bg-gray-600 w-full rounded-sm" %>
-  </div>
-
-  <div class="md:w-1/2 mx-auto space-y-1">
-    <%= f.label :description, "Description", class: "block" %>
-    <%= f.rich_text_area :description, placeholder: "Un t-shirt Naruto pour les fans de Naruto", class: "bg-gray-600 w-full rounded-sm" %>
-  </div>
-
-  <div class="md:w-1/2 mx-auto space-y-1">
-    <%= f.label :price, "Prix", class: "block" %>
-    <%= f.number_field :price, placeholder: "19.99", step: "0.01", class: "bg-gray-600 w-full rounded-sm" %>
-  </div>
-
-  <div class="md:w-1/2 mx-auto space-y-1">
-    <% @product.photos.each do |photo| %>
-      <%= f.hidden_field :photos, multiple: true, value: photo.signed_id %>
-    <% end %>
-    <%= f.file_field :photos, multiple: true, direct_upload: true, class: "bg-gray-600 w-full rounded-sm" %>
-  </div>
-
-  <div class="md:w-1/2 mx-auto space-y-1">
-    <%= f.label :category_id, "Catégorie", class: "block" %>
-    <%= f.collection_select :category_id, @categories, :id, :name, {prompt: "Choisir une catégorie"}, include_blank: true, class: "bg-gray-600 w-full rounded-sm" %>
-  </div>
-
-  <div class="md:w-1/2 mx-auto space-y-1">
-    <%= f.label :collection_ids, "Collections", class: "block" %>
-    <% @collections.each do |collection| %>
-      <div class="mt-1">
-        <%= check_box_tag 'product[collection_ids][]', collection.id, @product.collections.include?(collection), id: dom_id(collection), class: "mr-2 leading-tight" %>
-        <%= label_tag dom_id(collection), collection.name, class: "text-sm text-white" %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="text-center">
-    <%= f.submit "Modifier le produit", class: "cursor-pointer bg-blue-800 py-2 px-4 rounded-sm" %>
-
-  </div>
-
-  <% end %>
+<main class="md:w-1/2 mx-auto my-4">
+  <%= render 'products/components/form', product: @product, categories: @categories, collections: @collections, submit_label: "Modifier le produit" %>
 </main>

@@ -1,6 +1,10 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @carts = Cart.all
+  end
+
   def show
     @user = current_user
     @cart = @user.carts.find_by(status: "pending")
@@ -39,11 +43,4 @@ class CartsController < ApplicationController
     @cart.update(status: "pending")
     redirect_to cart_path(@cart), notice: "Votre paiement a été annulé"
   end
-
-  # def pay_cart
-  #   @user = current_user
-  #   @cart = @user.carts.find_by(status: "pending")
-
-  #   redirect_to cart_path(@cart), notice: "Votre panier a bien été payé"
-  # end
 end

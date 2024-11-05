@@ -40,4 +40,13 @@ Rails.application.routes.draw do
   get "cart/success" => "carts#success", as: :cart_success
   get "cart/cancel" => "carts#cancel", as: :cart_cancel
 
+  namespace :admin do
+    resources :users
+    resources :collections
+    resources :categories
+    resources :products
+    resources :carts
+    resources :cart_items
+  end
+
 end
