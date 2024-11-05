@@ -5,8 +5,6 @@ class CartItemsController < ApplicationController
     @product = Product.find(params[:product_id])
     @cart_item = @cart.cart_items.build(cart_item_params)
     if @cart_item.save
-      @cart.total_price += @cart_item.price
-      @cart.save
       redirect_to cart_path(@cart), notice: "L'article a bien été ajouté au panier."
     else
       # si erreur, on redirige vers la page actuelle

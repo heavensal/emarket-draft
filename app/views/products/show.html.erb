@@ -16,8 +16,20 @@
       <%= @product.name %>
     </h1>
 
+    <div>
+      <%= link_to 'Supprimer', product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Supprimer le produit ?"}, class: "bg-red-800 px-4 py-2 rounded-sm hover:bg-red-700 transition hover:duration-300" %>
+    </div>
+
     <p class="text-lg my-4">
       <%= number_to_currency(@product.price, unit: "€", precision: 2, separator: ".", delimiter: " ", format: "%n %u") %>
+    </p>
+
+    <p>
+      stripe_price_id = <%= @product.stripe_price_id %>
+    </p>
+
+    <p>
+      stripe_product_id = <%= @product.stripe_product_id %>
     </p>
 
     <div id="add_to_cart_button" class="text-center text-xl font-bold bg-orange-600 py-4 rounded-md transition hover:duration-150 hover:bg-orange-500">

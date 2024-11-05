@@ -9,7 +9,7 @@
 #   end
 
 # test to create a product on stripe via the api
-require "stripe"
+# require "stripe"
 
 # stripe_product = Stripe::Product.create(
 #   {
@@ -27,5 +27,36 @@ require "stripe"
 # p stripe_product
 
 stripe_product = Stripe::Product.retrieve('prod_R9TmFxvr5LPyDO')
-
 p stripe_product
+# price = Stripe::Price.retrieve(stripe_product.default_price)
+# p price.unit_amount
+
+# new_price_id = Stripe::Price.create({
+#   currency: 'eur',
+#   unit_amount: 15000,
+#   product: stripe_product.id
+# }).id
+
+# Stripe::Product.update(stripe_product.id, default_price: '')
+# p stripe_product.default_price
+# price_list = Stripe::Price.list({product: stripe_product.id})
+# price_list.each do |price|
+#   puts price.id
+#   puts price.active
+#   # Stripe::Price.update(price.id, {active: false})
+# end
+# sleep(2)
+
+# Stripe::Product.delete(stripe_product.id)
+
+
+
+# p stripe_product.default_price
+# p new_price = Stripe::Price.retrieve(stripe_product.default_price)
+# p new_price.unit_amount
+
+# stripe_product = Stripe::Product.update('prod_R9TmFxvr5LPyDO',
+#   default_price_data:
+#     { unit_amount: 5000 }
+#   )
+# p stripe_product

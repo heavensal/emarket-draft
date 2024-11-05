@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [ :show, :edit, :update, :destroy ]
+  # stripe_product_service = Stripe::StripeProductService.new(@product)
 
   def index
     @products = Product.all

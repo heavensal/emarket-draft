@@ -4,35 +4,53 @@
   Mon Panier
 </h1>
 
-<main>
+<main id="actual-cart-items">
+
   <div class="md:w-1/2 mx-auto space-y-4">
+
     <% if @cart.cart_items.any? %>
-      <table class="w-full">
+      <table class="w-full table-auto">
+
         <thead>
           <tr>
-            <th class="text-left">Articles</th>
+            <th class="text-center">
+              Articles
+            </th>
             <th class="text-right">
-
+              Prix
             </th>
           </tr>
         </thead>
+
         <tbody>
           <% @cart.cart_items.each do |cart_item| %>
             <tr>
+              <td class="text-center">
+                <%= cl_image_tag cart_item.product.photos.first.key, class: "w-16 h-16 object-cover rounded-lg" %>
+              </td>
               <td class="text-left">
                 <%= cart_item.product.name %>
               </td>
               <td class="text-right">
-
+                <%= number_to_currency(cart_item.product.price) %>
               </td>
             </tr>
           <% end %>
         </tbody>
+        <tfoot>
+          <tr>
+            <td class="text-left">
+              Total
+            </td>
+            <td class="text-right">
+              <%= number_to_currency(@cart.total_price) %>
+            </td>
       </table>
     <% else %>
       <p class="text-center">Votre panier est vide</p>
     <% end %>
   </div>
 
-  <%= link_to 'Procéder au paiement', payments_checkout_path %>
+      <%# form version ruby on rails %>
+      <%= link_to 'Procéder au paiement', cart_checkout_path(@cart), data: { turbo: "false" }, class: " bg-blue-800 py-2 px-4 rounded-sm transition hover:duration-150 hover:bg-blue-600" %>
 </main>

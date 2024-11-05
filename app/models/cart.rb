@@ -10,5 +10,4 @@ class Cart < ApplicationRecord
   # status: pending, awaiting_payment, paid, shipped, abandoned
   validates :status, presence: true
   validates :status, inclusion: { in: %w(pending awaiting_payment paid shipped abandoned) }
-
 end
