@@ -1,6 +1,8 @@
 import { Application } from "@hotwired/stimulus"
+import ScrollReveal from '@stimulus-components/scroll-reveal'
 
 const application = Application.start()
+application.register('scroll-reveal', ScrollReveal)
 
 // Configure Stimulus development experience
 application.debug = false

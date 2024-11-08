@@ -75,6 +75,8 @@ gem "omniauth-google-oauth2", "~> 1.2"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 # Payments
-gem "pay", "~> 8.1", ">= 8.1.3"
 gem "stripe", "~> 13.1"
 gem "receipts", "~> 2.4"
+
+# Search and sort
+gem "ransack", "~> 4.2", ">= 4.2.1"

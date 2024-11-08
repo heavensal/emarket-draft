@@ -1,6 +1,6 @@
 <%# app/views/products/_product-card.html.erb %>
 
-<%= link_to product_path(product), class: "group block" do %>
+<%= link_to product_path(product), data: { scroll_reveal_target: "item", delay: "#{index * 100}ms" },class: "reveal group block" do %>
 
   <% if product.photos.empty? %>
     <%= image_tag 'black_tshirt.webp', class: "aspect-square w-full rounded object-cover" %>

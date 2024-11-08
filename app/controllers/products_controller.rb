@@ -3,7 +3,15 @@ class ProductsController < ApplicationController
   # stripe_product_service = Stripe::StripeProductService.new(@product)
 
   def index
-    @products = Product.all
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true).order(:name)
+    @categories = Category.all.sort_by do |category|
+      [ params.dig(:q, :category_id_in)&.include?(category.id.to_s) ? 0 : 1, category.name ]
+    end
+    collection_ids = params.dig(:q, :collections_id_in) || []
+    @collections = Collection.all.sort_by do |collection|
+      [ collection_ids.include?(collection.id.to_s) ? 0 : 1, collection.name ]
+    end
   end
 
   def show
@@ -12,8 +20,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @categories = Category.all
-    @collections = Collection.all
+    @categories = Category.order(:name)
+    @collections = Collection.order(:name)
   end
 
   def create
@@ -26,8 +34,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @categories = Category.all
-    @collections = Collection.all
+    @categories = Category.order(:name)
+    @collections = Collection.order(:name)
   end
 
   def update

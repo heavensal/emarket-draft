@@ -1,6 +1,6 @@
 <%# app/views/products/_products-grid.html.erb %>
 
-<section class="grid gap-2 md:grid-cols-3 grid-cols-1 col-span-3">
+<section class="col-span-3 grid gap-2 md:grid-cols-3 grid-cols-1" data-controller="scroll-reveal">
 
     <% if products.empty? %>
 
@@ -10,8 +10,8 @@
 
     <% else %>
 
-      <% products.each do |product| %>
-        <%= render 'products/product-card', product: product %>
+      <% products.each_with_index do |product, index| %>
+        <%= render 'products/product-card', product: product, index: index %>
       <% end %>
 
     <% end %>

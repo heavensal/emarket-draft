@@ -34,4 +34,13 @@ class Product < ApplicationRecord
     stripe_price = Stripe::StripeProductService.new(self).update_price(self)
     self.update(stripe_price_id: stripe_price.id)
   end
+
+  # ransack search
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[name price collection_ids]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[category collections]
+  end
 end

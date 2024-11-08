@@ -8,7 +8,7 @@
 
 <main class="grid grid-cols-4 gap-4 my-8">
 
-  <%= render 'layouts/filter/aside-filter' %>
+  <%= render 'layouts/filter/aside-filter', q: @q, categories: @categories, collections: @collections %>
   <%= render 'products-grid', products: @products %>
 
 </main>
