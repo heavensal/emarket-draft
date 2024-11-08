@@ -6,6 +6,11 @@ class CollectionsController < ApplicationController
   end
 
   def show
+    @q = @collection.products.ransack(params[:q])
+    @products = @q.result(distinct: true).order(:name)
+    @categories = Category.all.sort_by do |category|
+      [ params.dig(:q, :category_id_in)&.include?(category.id.to_s) ? 0 : 1, category.name ]
+    end
   end
 
   def new
