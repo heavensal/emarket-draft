@@ -10,7 +10,7 @@
           <%= current_user.name %>
         </li>
         <li>
-          <%= current_user.role %>
+          <%= link_to current_user.role, admin_root_path, class: 'underline transition hover:duration-150 hover:no-underline' %>
         </li>
       <% else %>
         <li>

@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get "cart/cancel" => "carts#cancel", as: :cart_cancel
 
   namespace :admin do
+    root "dashboard#index"
     resources :users
     resources :collections
     resources :categories
@@ -55,5 +56,4 @@ Rails.application.routes.draw do
     resources :carts
     resources :cart_items
   end
-
 end
