@@ -47,7 +47,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Use RSpec for unit and integration tests [https://rspec.info/]
-  gem "rspec-rails", "~> 7.0.0"
+  gem "rspec-rails", "~> 7.1.0"
 
   # Use env
   gem "dotenv-rails"
